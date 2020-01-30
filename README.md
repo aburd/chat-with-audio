@@ -34,3 +34,13 @@ A simple, typical workflow for web audio would look something like this:
     Choose final destination of audio, for example your system speakers
     Connect the sources up to the effects, and the effects to the destination.
 
+## The simplest example
+
+```
+_______________          ______________
+|              |         |             |
+| Source       | ======> | Destination |
+| mediaElement |         | context.    |
+|______________|         | destination |
+                          -------------
+```
