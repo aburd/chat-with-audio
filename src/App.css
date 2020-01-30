@@ -36,3 +36,91 @@
     transform: rotate(360deg);
   }
 }
+
+.message {
+  padding-bottom: 10px;
+}
+
+.human-message, .chatbot-message {
+  display: flex;
+  align-items: center;
+}
+
+.message .text {
+  padding: 10px;
+  max-width: 150px;
+  word-wrap: anywhere;
+  text-align: left;
+}
+
+.limited {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+}
+
+.human-message .limited {
+  border: 1px solid white;
+}
+
+.chatbot-message .limited {
+  border: 1px solid red;
+}
+
+.limited img {
+  position: absolute;
+  width: 80px;
+  top: 4px;
+  left: 5px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 20px;
+  min-height: 500px;
+  min-width: 280px;
+  background: #eee;
+}
+
+.screen {
+  border: 1px solid white;
+  min-height: 500px;
+  position: relative;
+  background: #88f;
+}
+
+.screen .text-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+.screen .text-container input {
+  width: 97%;
+}
+
+.messages {
+  list-style: none;
+  margin: 0px;
+  padding: 10px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.iphone-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: gray;
+  border: 2px solid #aaa;
+  margin-top: 10px;
+}
