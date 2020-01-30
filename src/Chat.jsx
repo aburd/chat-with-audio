@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import man from './man.png'
 import manS from './man-s.png'
+import chatbotMsgs from './chatbot-messages.json'
 
 const CHATBOT_WAIT = 1000;
 
@@ -57,6 +58,7 @@ class Chat extends Component {
       messages: [],
       text: '',
       thankyou: false,
+      nextChatbotMsg: 0,
     }
   }
 
@@ -66,21 +68,27 @@ class Chat extends Component {
   appendMessage = (message) => {
     this.setState({
       messages: [...this.state.messages, message]
+    }, () => {
+      this.messages.scrollTo(0, this.messages.scrollHeight)
     })
   }
 
-  appendHumanMessage = text => {
-    const message = { text, isChatbot: false }
-    this.setState({
-      messages: [...this.state.messages, message]
-    })
+  createChatbotMsg = () => {
+    const { nextChatbotMsg } = this.state;
+    const nextText = chatbotMsgs[nextChatbotMsg]
+    this.setState({ nextChatbotMsg: nextChatbotMsg + 1 > (chatbotMsgs.length - 1) ? 0 : nextChatbotMsg + 1 })
+    return {
+      isChatbot: true,
+      text: nextText,
+    }
   }
 
   handleChatSubmit = (e) => {
     e.preventDefault()
-    this.appendHumanMessage(this.state.text)
+    this.appendMessage({ isChatbot: false, text: this.state.text })
     setTimeout(() => { 
-      this.appendMessage({ isChatbot: true, text: 'Hello world' })
+      const cbMsg = this.createChatbotMsg()
+      this.appendMessage(cbMsg)
     }, CHATBOT_WAIT)
     this.setState({ text: '' })
   }
@@ -89,7 +97,7 @@ class Chat extends Component {
     return this.state.thankyou ? <h1>Thank you!</h1> : (
       <div className="chat">
         <div className="screen">
-          <ul className="messages">
+          <ul className="messages" ref={ref => this.messages = ref}>
             {this.state.messages.map((m, i) => {
               return (
                 <Message
