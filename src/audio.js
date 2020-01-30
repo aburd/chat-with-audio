@@ -77,11 +77,6 @@ const pathToAudio = sample => {
   return sound
 }
 
-let state = {
-  playing: false,
-  speechSpeed: 30,
-};
-
 // Source (mediaElement)
 export const manSampleMap = Object.keys(manSamples).reduce((map, symbol) => {
   const path = manSamples[symbol]
@@ -93,18 +88,20 @@ export const manSampleMap = Object.keys(manSamples).reduce((map, symbol) => {
 export function playSound(audio) {
   return new Promise((resolve, reject) => {
     if (!audio) reject('No audio')
-    audio.play()
-    const cb = () => {
-      resolve(audio)
-      audio.removeEventListener('ended', cb);
-    }
-    audio.addEventListener('ended', cb)
+    audioContext.resume().then(() => { 
+      audio.play()
+      const cb = () => {
+        resolve(audio)
+        audio.removeEventListener('ended', cb);
+      }
+      audio.addEventListener('ended', cb)
+    })
   })
 }
 
 export function playWord(word, sampleMap) {
   word = word.toLowerCase()
-  const chars = word.split('').filter((_, i) => (i + 1) % 2)
+  const chars = word.split('').filter((_, i) => i % 2)
   const sounds = chars.map(char => sampleMap[char])
   return Promise.mapSeries(sounds, playSound)
 }

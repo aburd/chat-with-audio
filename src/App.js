@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
+import Chat from './Chat';
 
 function App({ audio }) {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={() => {
-          console.log('starting')
-          audio.playSentence('Hello world', audio.manSampleMap)
-            .then(() => console.log('finished'))
-        }}>Click me</button>
+        <Chat audio={audio} />
       </header>
     </div>
   );
