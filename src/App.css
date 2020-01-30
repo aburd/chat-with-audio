@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
   color: white;
 }
 
@@ -48,7 +48,7 @@
 
 .message .text {
   padding: 10px;
-  max-width: 150px;
+  width: 150px;
   word-wrap: anywhere;
   text-align: left;
 }
