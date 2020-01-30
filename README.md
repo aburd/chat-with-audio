@@ -1,6 +1,22 @@
 # Web Audio Chat
 
-## Overview
+## This project
+
+### Description
+
+Uses web audio to show a chatbot could do with "faked" human audio. This gives the chatbot more personality
+
+## How to use
+
+Type into the textbox and press enter
+
+### What does it do
+
+Takes any textual data that the chatbot says and iterates over the letters in the text.
+A corresponding sound is chosen for each letter essentially randomizing the resulting sound.
+
+
+## Web Audio Overview
 
 - Handle audio operations inside an **audio context**
 - Basic audio operations are performed with **audio nodes**
