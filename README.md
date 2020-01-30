@@ -6,7 +6,7 @@
 
 Uses web audio to show a chatbot could do with "faked" human audio. This gives the chatbot more personality
 
-## How to use
+### How to use
 
 Type into the textbox and press enter
 
@@ -40,7 +40,7 @@ A corresponding sound is chosen for each letter essentially randomizing the resu
   - This sends the sound to the speakers or headphones
     - This last connection is only necessary is the user is supposed to hear the audio
 
-## A typical workflow
+### A typical workflow
 
 A simple, typical workflow for web audio would look something like this:
 
@@ -50,7 +50,7 @@ A simple, typical workflow for web audio would look something like this:
     Choose final destination of audio, for example your system speakers
     Connect the sources up to the effects, and the effects to the destination.
 
-## The simplest example
+### The simplest example
 
 ```
 _______________          ______________
@@ -60,3 +60,7 @@ _______________          ______________
 |______________|         | destination |
                           -------------
 ```
+
+## Read More
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
